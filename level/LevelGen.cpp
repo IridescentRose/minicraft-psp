@@ -1,7 +1,7 @@
 /*
  * LevelGen.cpp
  *
- *  Created on: 17 окт. 2013 г.
+ *  Created on: 17 пїЅпїЅпїЅ. 2013 пїЅ.
  *      Author: user
  */
 
@@ -82,10 +82,10 @@ void LevelGen::setSample(int x, int y, float value)
 	values[(x & widthMinusOne) + (y & heightMinusOne) * w] = value;
 }
 
-byte ** LevelGen::createAndValidateTopMap(int w, int h)
+uint8_t ** LevelGen::createAndValidateTopMap(int w, int h)
 {
 	int attempt = 0;
-	byte ** result = NULL;
+	uint8_t ** result = NULL;
 	do
 	{
 		if (result)
@@ -135,10 +135,10 @@ byte ** LevelGen::createAndValidateTopMap(int w, int h)
 	//oslDebug("%d",oslBenchmarkTest(OSL_BENCH_GET));
 }
 
-byte ** LevelGen::createAndValidateUndergroundMap(int w, int h, int depth)
+uint8_t ** LevelGen::createAndValidateUndergroundMap(int w, int h, int depth)
 {
 	int attempt = 0;
-	byte ** result = NULL;
+	uint8_t ** result = NULL;
 	do
 	{
 		if (result)
@@ -166,10 +166,10 @@ byte ** LevelGen::createAndValidateUndergroundMap(int w, int h, int depth)
 	} while (true);
 }
 
-byte ** LevelGen::createAndValidateSkyMap(int w, int h)
+uint8_t ** LevelGen::createAndValidateSkyMap(int w, int h)
 {
 	int attempt = 0;
-	byte ** result = NULL;
+	uint8_t ** result = NULL;
 	do
 	{
 		if (result)
@@ -193,7 +193,7 @@ byte ** LevelGen::createAndValidateSkyMap(int w, int h)
 	} while (true);
 }
 
-byte ** LevelGen::createTopMap(int w, int h)
+uint8_t ** LevelGen::createTopMap(int w, int h)
 {
 	LevelGen mnoise1(w, h, 16);
 	LevelGen mnoise2(w, h, 16);
@@ -203,9 +203,9 @@ byte ** LevelGen::createTopMap(int w, int h)
 	LevelGen noise2(w, h, 32);
 
 
-	byte * map = new byte[w * h];
-	byte * data = new byte[w * h];
-	memset(data, 0 ,w * h * sizeof(byte));
+	uint8_t * map = new uint8_t[w * h];
+	uint8_t * data = new uint8_t[w * h];
+	memset(data, 0 ,w * h * sizeof(uint8_t));
 	for (int y = 0; y < h; y++) {
 		for (int x = 0; x < w; x++) {
 			int i = x + y * w;
@@ -291,7 +291,7 @@ byte ** LevelGen::createTopMap(int w, int h)
 				if (map[xx + yy * w] == Tile::grass->id) {
 					map[xx + yy * w] = Tile::flower->id;
 					data[xx + yy * w] =
-							(byte) (col + random->nextInt(4) * 16);
+							(uint8_t) (col + random->nextInt(4) * 16);
 				}
 			}
 		}
@@ -332,13 +332,13 @@ byte ** LevelGen::createTopMap(int w, int h)
 		i++;
 	}
 
-	byte ** result = new byte*[2];
+	uint8_t ** result = new uint8_t*[2];
 	result[0] = map;
 	result[1] = data;
 	return result;
 }
 
-byte ** LevelGen::createUndergroundMap(int w, int h, int depth)
+uint8_t ** LevelGen::createUndergroundMap(int w, int h, int depth)
 {
 	LevelGen mnoise1(w, h, 16);
 	LevelGen mnoise2(w, h, 16);
@@ -355,9 +355,9 @@ byte ** LevelGen::createUndergroundMap(int w, int h, int depth)
 	LevelGen noise1(w, h, 32);
 	LevelGen noise2(w, h, 32);
 
-	byte * map = new byte[w * h];
-	byte * data = new byte[w * h];
-	memset(data, 0 ,w * h * sizeof(byte));
+	uint8_t * map = new uint8_t[w * h];
+	uint8_t * data = new uint8_t[w * h];
+	memset(data, 0 ,w * h * sizeof(uint8_t));
 	for (int y = 0; y < h; y++)
 	{
 		for (int x = 0; x < w; x++)
@@ -413,7 +413,7 @@ byte ** LevelGen::createUndergroundMap(int w, int h, int depth)
 				int yy = y + random->nextInt(5) - random->nextInt(5);
 				if (xx >= r && yy >= r && xx < w - r && yy < h - r) {
 					if (map[xx + yy * w] == Tile::rock->id) {
-						map[xx + yy * w] = (byte) ((Tile::ironOre->id & 0xff) + depth - 1);
+						map[xx + yy * w] = (uint8_t) ((Tile::ironOre->id & 0xff) + depth - 1);
 					}
 				}
 			}
@@ -448,20 +448,20 @@ byte ** LevelGen::createUndergroundMap(int w, int h, int depth)
 		}
 	}
 
-	byte ** result = new byte*[2];
+	uint8_t ** result = new uint8_t*[2];
 	result[0] = map;
 	result[1] = data;
 	return result;
 }
 
-byte ** LevelGen::createSkyMap(int w, int h)
+uint8_t ** LevelGen::createSkyMap(int w, int h)
 {
 	LevelGen noise1(w, h, 8);
 	LevelGen noise2(w, h, 8);
 
-	byte * map = new byte[w * h];
-	byte * data = new byte[w * h];
-	memset(data, 0 ,w * h * sizeof(byte));
+	uint8_t * map = new uint8_t[w * h];
+	uint8_t * data = new uint8_t[w * h];
+	memset(data, 0 ,w * h * sizeof(uint8_t));
 	for (int y = 0; y < h; y++) {
 		for (int x = 0; x < w; x++) {
 			int i = x + y * w;
@@ -543,7 +543,7 @@ byte ** LevelGen::createSkyMap(int w, int h)
 		i++;
 	}
 
-	byte ** result = new byte*[2];
+	uint8_t ** result = new uint8_t*[2];
 	result[0] = map;
 	result[1] = data;
 	return result;
@@ -555,9 +555,9 @@ byte ** LevelGen::createSkyMap(int w, int h)
 //			int w = 128;
 //			int h = 128;
 //
-//			byte[] map = LevelGen.createAndValidateTopMap(w, h)[0];
-//			// byte[] map = LevelGen.createAndValidateUndergroundMap(w, h, (d++ % 3) + 1)[0];
-//			// byte[] map = LevelGen.createAndValidateSkyMap(w, h)[0];
+//			uint8_t[] map = LevelGen.createAndValidateTopMap(w, h)[0];
+//			// uint8_t[] map = LevelGen.createAndValidateUndergroundMap(w, h, (d++ % 3) + 1)[0];
+//			// uint8_t[] map = LevelGen.createAndValidateSkyMap(w, h)[0];
 //
 //			BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 //			int[] pixels = new int[w * h];

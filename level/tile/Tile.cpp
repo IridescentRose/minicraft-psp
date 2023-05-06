@@ -11,7 +11,7 @@
 #include "GrassTile.h"
 #include "RockTile.h"
 #include "WaterTile.h"
-#include "FLowerTile.h"
+#include "FlowerTile.h"
 #include "TreeTile.h"
 #include "DirtTile.h"
 #include "SandTile.h"

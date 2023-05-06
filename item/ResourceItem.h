@@ -5,7 +5,6 @@
 #include "../entity/ItemEntity.h"
 #include "../level/Level.h"
 #include "../level/tile/Tile.h"
-#include "../screen.h"
 #include "../Screen.h"
 #include "resource/Resource.h"
 

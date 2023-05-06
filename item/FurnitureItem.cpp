@@ -2,7 +2,7 @@
 
 #include "../Color.h"
 #include "../Font.h"
-#include "../screen.h"
+#include "../Screen.h"
 #include "../level/Level.h"
 #include "../entity/ItemEntity.h"
 #include "../entity/Entity.h"

@@ -7,8 +7,6 @@
 
 using namespace std;
 
-typedef unsigned char byte;
-
 class Player;
 
 class Level {
@@ -17,8 +15,8 @@ public:
 	virtual ~Level();
 	int w, h;
 
-	byte * tiles;
-	byte * data;
+	uint8_t* tiles;
+	uint8_t* data;
 
 	Player * player;
 
