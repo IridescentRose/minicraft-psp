@@ -1,9 +1,5 @@
-// Generated from /minicraft/src/com/mojang/ld22/InputHandler.java
-
 #include "InputHandler_Key.h"
-
 #include "InputHandler.h"
-
 #include <oslib/oslib.h>
 
 InputHandler_Key::InputHandler_Key(InputHandler * inputHandler):
@@ -34,12 +30,6 @@ void InputHandler_Key::toggle(bool pressed)
 
 void InputHandler_Key::tick()
 {
-//    if(absorbs < presses) {
-//        absorbs++;
-//        clicked = true;
-//    } else {
-//        clicked = false;
-//    }
 	if (clicked)
 	{
 		clicked = false;

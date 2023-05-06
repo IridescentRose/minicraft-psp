@@ -1,5 +1,4 @@
-#ifndef TYPEABLE_H_
-#define TYPEABLE_H_
+#pragma once
 
 enum ClassType
 {
@@ -15,20 +14,15 @@ enum ClassType
 };
 
 //this class is intended to replace java instainceOf function using predefined enums
-
 class Typeable {
 public:
-	bool instanceOf(ClassType t)
-	{
-		if (this->classType() == t)
-			return true;
-		return false;
-	}
+    virtual ~Typeable() {}
 
-	virtual ClassType classType()
-	{
-		return UNDEFINED;
-	}
+    bool instanceOf(ClassType t) const {
+        return (this->classType() == t);
+    }
+
+    virtual ClassType classType() const {
+        return UNDEFINED;
+    }
 };
-
-#endif /* TYPEABLE_H_ */

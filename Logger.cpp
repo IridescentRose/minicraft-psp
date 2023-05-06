@@ -1,24 +1,20 @@
 #include "Logger.h"
 
-VIRTUAL_FILE * Logger::logFile;
+VIRTUAL_FILE* Logger::logFile = nullptr;
 
 void Logger::init()
 {
-	Logger::logFile = VirtualFileOpen((char*)"host0:/log.txt", 0, VF_FILE, VF_O_WRITE);
+    logFile = VirtualFileOpen((void*)("host0:/log.txt"), 0, VF_FILE, VF_O_WRITE);
 }
 
-void Logger::log(char * msg)
+void Logger::log(const std::string& msg)
 {
-	char str[255];
-	sprintf(str, "%s\n",msg);
-	VirtualFilePuts(str, logFile);
-	 //VirtualFilePuts(msg, logFile);
-	 //VirtualFilePuts("\n", logFile);
+    VirtualFilePuts((msg + "\n").c_str(), logFile);
 }
 
-void Logger::log(const char * msg, int number)
+void Logger::log(const std::string& msg, int number)
 {
-	char str[255];
-	sprintf(str, "%s %d\n", msg, number);
-	VirtualFilePuts(str, logFile);
+    char str[255];
+    sprintf(str, "%s %d\n", msg.c_str(), number);
+    VirtualFilePuts(str, logFile);
 }

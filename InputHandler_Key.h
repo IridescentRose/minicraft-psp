@@ -1,6 +1,4 @@
-// Generated from /minicraft/src/com/mojang/ld22/InputHandler.java
-#ifndef INPUT_HANDLER_KEY_H_
-#define INPUT_HANDLER_KEY_H_
+#pragma once
 
 class InputHandler;
 
@@ -18,5 +16,3 @@ public:
 private:
     friend class InputHandler;
 };
-
-#endif

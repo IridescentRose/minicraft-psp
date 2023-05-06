@@ -1,25 +1,22 @@
-#ifndef SOUND_H_
-#define SOUND_H_
+#pragma once
 
 #include "oslib/oslib.h"
 
 class Sound {
 public:
-	Sound(const char * name);
-	virtual ~Sound();
-	static void initSounds();
-	void play();
+    Sound(const char* name);
+    virtual ~Sound();
+    static void initSounds();
+    void play();
 
-	static Sound * playerHurt;
-	static Sound * playerDeath;
-	static Sound * monsterHurt;
-	static Sound * test;
-	static Sound * pickup;
-	static Sound * bossdeath;
-	static Sound * craft;
+    static Sound* playerHurt;
+    static Sound* playerDeath;
+    static Sound* monsterHurt;
+    static Sound* test;
+    static Sound* pickup;
+    static Sound* bossdeath;
+    static Sound* craft;
 
 private:
-	OSL_SOUND * clip;
+    OSL_SOUND* clip;
 };
-
-#endif /* SOUND_H_ */

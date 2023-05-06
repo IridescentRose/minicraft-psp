@@ -1,20 +1,15 @@
-#ifndef LOGGER_H_
-#define LOGGER_H_
+#pragma once
 
 #include <string>
 #include <oslib/VirtualFile.h>
 
-using namespace std;
-
 class Logger
 {
 public:
-	static void init();
-	static void log(char* msg);
-	static void log(const char * msg, int number);
+    static void init();
+    static void log(const std::string& msg);
+    static void log(const std::string& msg, int number);
 
 private:
-	static VIRTUAL_FILE * logFile;
+    static VIRTUAL_FILE* logFile;
 };
-
-#endif /* LOGGER_H_ */

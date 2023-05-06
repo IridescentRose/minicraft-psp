@@ -1,5 +1,3 @@
-//#include <psprtc.h>
-
 #include "Random.h"
 
 #include <stdlib.h>
@@ -12,10 +10,7 @@ Random::Random()
 	oslSrand(time(0));
 }
 
-Random::~Random()
-{
-	// TODO Auto-generated destructor stub
-}
+Random::~Random() {}
 
 int Random::nextInt(int upper)
 {
@@ -29,7 +24,6 @@ float Random::nextFloat()
 
 double Random::nextGaussian()
 {
-	//rather slow routine
 	double x = 0;
 	for(ushort i = 0; i < 25; ++i)
 	{
@@ -46,4 +40,3 @@ bool Random::nextBoolean()
 {
 	return (bool)nextInt(2);
 }
-

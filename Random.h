@@ -1,5 +1,4 @@
-#ifndef RANDOM_H_
-#define RANDOM_H_
+#pragma once
 
 class Random {
 public:
@@ -10,5 +9,3 @@ public:
 	double nextGaussian();
 	bool nextBoolean();
 };
-
-#endif /* RANDOM_H_ */
